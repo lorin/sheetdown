@@ -1,7 +1,8 @@
 (ns sheetdown.core
+(:require [sheetdown.clipboard :as clipboard])
   (:gen-class))
 
 (defn -main
-  "I don't do a whole lot ... yet."
+  "The main function"
   [& args]
-  (println "Hello, World!"))
+(-> clipboard/get println))
