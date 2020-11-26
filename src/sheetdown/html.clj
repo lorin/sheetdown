@@ -13,15 +13,6 @@
   [s]
   (-> s string->stream soup/parse))
 
-(defn to-table
-  "Convert an HTML string to our internal table representation"
-  [s] 
-  (let [t (parse s)
-        tbl (get-tag t :table)
-        rows (get-tags tbl :tr)]
-    (for [row rows]
-      (get-row-values row))))
-
 (defn get-tags
   "Given a parsed HTML tree, return the sub-trees with matching tag
    
@@ -29,6 +20,7 @@
   [tbl tag]
   (cond
     (nil? tbl) []
+    (string? tbl) []  ; if we get a string, we're trying to recur on data, just stop
     (= (soup/tag tbl) tag) [tbl]
     :else (let [f #(get-tags % tag)]
             (->> tbl soup/children (mapcat f)))))
@@ -41,4 +33,14 @@
 (defn get-row-values
   "Given a tr subtree, return the values in the td cells"
   [row]
-  (mapcat soup/children (get-tags row :td)))
+  (vec
+   (mapcat soup/children (get-tags row :td))))
+
+(defn to-table
+  "Convert an HTML string to our internal table representation"
+  [s] 
+  (let [t (parse s)
+        tbl (get-tag t :table)
+        rows (get-tags tbl :tr)]
+    (for [row rows]
+      (get-row-values row))))

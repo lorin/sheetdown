@@ -3,6 +3,8 @@
 
 (use 'sheetdown.html :reload)
 
+(to-table (slurp "example.html"))
+
 (def html (slurp "simplified-example.html"))
 
 (def t (parse html))
