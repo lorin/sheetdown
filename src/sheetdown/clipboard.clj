@@ -21,11 +21,12 @@
     (.getData clipboard best-flavor)))
 
 (defn get
-  "Retrieve clipboard contents"
+  "Retrieve clipboard contents, as a string"
   []
   (let [data (get-data)]
     (cond
       (instance? String data) data
-      (instance? InputStreamReader data) (with-open
-                                          [rdr (reader data)]
-                                           (join (line-seq rdr))))))
+      (instance? InputStreamReader data)
+      (with-open
+       [rdr (reader data)]
+        (join (line-seq rdr))))))
