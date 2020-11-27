@@ -4,6 +4,28 @@
 (defn header [t] (first t))
 (defn body [t] (rest t))
 
+(defn pad [s n]
+  "Left pad a string with spaces so it fits in a width of n"
+  (let [fmt (str "%" n "s")]
+    (format fmt s)))
+
+(defn transpose
+  "Transpose a table"
+  [tbl]
+  (apply map vector tbl))
+
+(defn max-len
+  "Given a collection of strings, return the length of the largest"
+  [coll]
+  (let [lengths (map count coll)]
+    (reduce max lengths)))
+
+(defn max-column-widths
+  [tbl]
+  (let [columns (transpose tbl)]
+    (map max-len columns)))
+
+
 (defn dashes
   "Given a string, return a string the same size made up of dashes"
   [s]
