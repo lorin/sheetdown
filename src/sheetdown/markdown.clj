@@ -25,14 +25,6 @@
   (let [columns (transpose tbl)]
     (map max-len columns)))
 
-
-(defn dashes
-  "Given a string, return a string the same size made up of dashes"
-  [s]
-  (let [n (count s)]
-    (->> "-" (repeat n) join)))
-
-
 (defn fences
   "Given a collection of strings, return a single string delimited by fences, with at least a space on either side"
   ([coll]
