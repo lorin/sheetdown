@@ -5,10 +5,15 @@
   (:gen-class))
 
 (defn -main
-  "Grab the clipboard conents and dump a table"
+  "Grab the clipboard contents and dump a markdown table"
   [& args]
-  (->
-   (clipboard/get)
-   html/string->table
-   table->md
-   println))
+  (try 
+    (->
+     (clipboard/get)
+     html/string->table
+     table->md
+     println)
+    (catch Exception e
+      (binding [*out* *err*]
+        (println "Error:" (.getMessage e))
+        (System/exit 1)))))
