@@ -43,7 +43,7 @@ Grab the [latest release], then:
 1. Copy a Google Sheets range to your clipboard.
 2. Run the command:
 
-    $ java -jar sheetdown-1.0.0-standalone.jar
+        java -jar sheetdown-1.0.0-standalone.jar
 
 [latest release]: https://github.com/lorin/sheetdown/releases
 
