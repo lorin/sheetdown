@@ -1,5 +1,5 @@
 (ns sheetdown.markdown
-  (:require [clojure.string :refer [join]]))
+  (:require [clojure.string :refer [join triml trimr]]))
 
 (defn header [t] (first t))
 (defn body [t] (rest t))
@@ -34,11 +34,13 @@
 
 
 (defn fences
-  "Given a collection of strings, return a single string delimited by fences"
+  "Given a collection of strings, return a single string delimited by fences, with at least a space on either side"
   ([coll]
-   (let [sep "|"
+   (let [sep " | "
          inner (join sep coll)]
-     (str sep inner sep)))
+     (str 
+      (triml sep)
+      inner (trimr sep))))
   ([coll widths]
    (let [string-widths (map vector coll widths)
          padded (for [[s w] string-widths] (pad s w))]

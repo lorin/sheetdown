@@ -10,26 +10,26 @@ Converts a Google Sheets range in your clipboard to (Github Flavored) Markdown [
 
 ## Generated output
 
+### Rendered
+
+| Multi-region data | (ver, acc, region) entry in cache | cached image is older than river data | prime cache? |
+| ----------------- | --------------------------------- | ------------------------------------- | ------------ |
+|                 T |                                 T |                                     T |            T |
+|                 T |                                 T |                                     F |            F |
+|                 T |                                 F |                                     * |            T |
+|                 F |                                 * |                                     * |            F |
+
+
 ### Literal
 
 ```
-|Multi-region data|(ver, acc, region) entry in cache|cached image is older than river data|prime cache?|
-|-----------------|---------------------------------|-------------------------------------|------------|
-|                T|                                T|                                    T|           T|
-|                T|                                T|                                    F|           F|
-|                T|                                F|                                    *|           T|
-|                F|                                *|                                    *|           F|
+| Multi-region data | (ver, acc, region) entry in cache | cached image is older than river data | prime cache? |
+| ----------------- | --------------------------------- | ------------------------------------- | ------------ |
+|                 T |                                 T |                                     T |            T |
+|                 T |                                 T |                                     F |            F |
+|                 T |                                 F |                                     * |            T |
+|                 F |                                 * |                                     * |            F |
 ```
-
-### Rendered
-
-
-|Multi-region data|(ver, acc, region) entry in cache|cached image is older than river data|prime cache?|
-|-----------------|---------------------------------|-------------------------------------|------------|
-|                T|                                T|                                    T|           T|
-|                T|                                T|                                    F|           F|
-|                T|                                F|                                    *|           T|
-|                F|                                *|                                    *|           F|
 
 
 ## Usage
@@ -41,3 +41,8 @@ Converts a Google Sheets range in your clipboard to (Github Flavored) Markdown [
     $ java -jar sheetdown-1.0.0-standalone.jar
 
 
+## Build
+
+```
+lein uberjar
+```
