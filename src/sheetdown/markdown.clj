@@ -59,8 +59,9 @@
 (defn gen-body
   "Generate a markdown representation of the table body"
   [t widths]
-  (let [rows (body t)]
-    (join "\n" (map fences rows))))
+  (let [rows (body t)
+        f #(fences % widths)]
+    (join "\n" (map f rows))))
 
 (defn table->md
   "Given a table, generate a markdown string representation of the table"
