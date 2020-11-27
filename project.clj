@@ -1,4 +1,4 @@
-(defproject sheetdown "0.1.0-SNAPSHOT"
+(defproject sheetdown "1.0.0"
   :description "Grab Google Sheet range from clipboard and output a markdown table"
   :url "https://github.com/lorin/sheetdown"
   :license {:name "Apache 2.0"
