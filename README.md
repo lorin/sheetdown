@@ -2,7 +2,7 @@
 
 Sheetdown converts a Google Sheets range in your clipboard to (Github Flavored) Markdown [table] format.
 
-For when you want to use Google Sheets to write [decision tables], but you
+It's for when you want to use Google Sheets to write [decision tables], but you
 also want the table in Markdown format, so you can add it to your docs, and
 you really don't want to write out that Markdown table by hand.
 
