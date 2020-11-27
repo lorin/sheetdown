@@ -32,38 +32,48 @@
   (let [n (count s)]
     (->> "-" (repeat n) join)))
 
+
 (defn fences
   "Given a collection of strings, return a single string delimited by fences"
-  [coll]
-  (let [sep "|"
-        inner (join sep coll)]
-    (str sep inner sep)))
+  ([coll]
+   (let [sep "|"
+         inner (join sep coll)]
+     (str sep inner sep)))
+  ([coll widths]
+   (let [string-widths (map vector coll widths)
+         padded (for [[s w] string-widths] (pad s w))]
+     (fences padded))))
 
 (defn gen-header
   "Generate the markdown representation of the header of the table"
-  [t]
-  (let [hdr (header t)]
+  [t widths]
+  (let [hdr (header t)
+        dash #(->> "-" (repeat %) join)]
     (str
-     (fences hdr)
+     (fences hdr widths)
      "\n"
-     (fences (map dashes hdr))
+     (fences (map dash widths))
      "\n")))
 
 
 (defn gen-body
   "Generate a markdown representation of the table body"
-  [t]
+  [t widths]
   (let [rows (body t)]
     (join "\n" (map fences rows))))
 
 (defn table->md
   "Given a table, generate a markdown string representation of the table"
   [t]
-  (str
-   (gen-header t)
-   (gen-body t)))
+  (let [widths (max-column-widths t)]
+    (str
+     (gen-header t widths)
+     (gen-body t widths))))
 
 
 (def fixture [["X", "Y"], ["T", "F"]])
 
-(gen-header fixture)
+(gen-header fixture [1, 2])
+
+(def x (sheetdown.html/string->table (slurp "ex.html")))
+(print (table->md x))
