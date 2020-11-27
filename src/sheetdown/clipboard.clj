@@ -21,7 +21,7 @@
     (.getData clipboard best-flavor)))
 
 (defn get
-  "Retrieve clipboard contents, as a string"
+  "Retrieve clipboard contents as a string"
   []
   (let [data (get-data)]
     (cond

@@ -1,9 +1,12 @@
 (ns sheetdown.core
-(:require [sheetdown.clipboard :as clipboard]
-          [sheetdown.html :as html])
+  (:require [sheetdown.clipboard :as clipboard]
+            [sheetdown.html :as html])
   (:gen-class))
 
 (defn -main
-  "The main function"
+  "Grab the clipboard conents and dump a table"
   [& args]
-(-> "example.html" slurp html/parse println))
+  (->
+   (clipboard/get)
+   html/string->table
+   println))
