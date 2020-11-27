@@ -70,11 +70,3 @@
     (str
      (gen-header t widths)
      (gen-body t widths))))
-
-
-(def fixture [["X", "Y"], ["T", "F"]])
-
-(gen-header fixture [1, 2])
-
-(def x (sheetdown.html/string->table (slurp "ex.html")))
-(print (table->md x))

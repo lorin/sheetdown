@@ -29,4 +29,4 @@
     (let [t (parse fixture)]
       (is (= (first t) :html)))))
 
-;(run-tests)
+(run-tests)
