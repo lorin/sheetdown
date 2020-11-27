@@ -1,7 +1,11 @@
 # sheetdown
 
-Converts a Google Sheets range in your clipboard to (Github Flavored) Markdown [table] format.
+For when you want to use Google Sheets to write [decision tables], but you want to convert them
+to Markdown to add them to your docs.
 
+Sheetdown converts a Google Sheets range in your clipboard to (Github Flavored) Markdown [table] format.
+
+[decision tables]: https://www.hillelwayne.com/decision-tables/
 [table]: https://github.github.com/gfm/#tables-extension-
 
 ## Example input
@@ -34,21 +38,19 @@ Converts a Google Sheets range in your clipboard to (Github Flavored) Markdown [
 
 ## Usage
 
-Currently, you need [Leiningen] to run it.
-
-[Leiningen]: https://leiningen.org/
-
+Grab the [latest release], then:
 
 1. Copy a Google Sheets range to your clipboard.
 2. Run the command:
 
-    $ lein run 
-    
-
-Eventually, if there's demand for building a standalone jar, it'll run like this:
-    
     $ java -jar sheetdown-1.0.0-standalone.jar
 
+[latest release]: https://github.com/lorin/sheetdown/releases
+
+
+## Development
+
+This is written in Clojure, largely as an excuse to learn Clojure better.
 
 ## Notes
 
