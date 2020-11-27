@@ -21,17 +21,18 @@
   "Generate the markdown representation of the header of the table"
   [t]
   (let [hdr (header t)]
-    (str "|"
-         (join "|" hdr)
-         "|\n"
-         "|"
-         (for [s hdr] (repeat (count s) "-")))))
+    (str
+     (fences hdr)
+     "\n"
+     (fences (map dashes hdr))
+     "\n")))
 
 
 (defn gen-body
   "Generate a markdown representation of the table body"
   [t]
-  (body t))
+  (let [rows (body t)]
+    (join "\n" (map fences rows))))
 
 (defn table->md
   "Given a table, generate a markdown string representation of the table"

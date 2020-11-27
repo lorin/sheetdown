@@ -1,7 +1,7 @@
 (ns sheetdown.core
   (:require [sheetdown.clipboard :as clipboard]
             [sheetdown.html :as html]
-            [sheetdown.markdown :as md])
+            [sheetdown.markdown :refer [table->md]])
   (:gen-class))
 
 (defn -main
@@ -10,5 +10,5 @@
   (->
    (clipboard/get)
    html/string->table
-   md/table->md
+   table->md
    println))
