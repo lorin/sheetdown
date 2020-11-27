@@ -1,5 +1,5 @@
 (ns sheetdown.markdown
-  (:require [clojure.string :refer [join triml trimr]]))
+  (:require [clojure.string :refer [join trim]]))
 
 (defn header [t] (first t))
 (defn body [t] (rest t))
@@ -30,9 +30,9 @@
   ([coll]
    (let [sep " | "
          inner (join sep coll)]
-     (str 
-      (triml sep)
-      inner (trimr sep))))
+     (->
+      (str sep inner sep)
+      trim)))
   ([coll widths]
    (let [string-widths (map vector coll widths)
          padded (for [[s w] string-widths] (pad s w))]
