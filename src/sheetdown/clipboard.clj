@@ -11,9 +11,9 @@
 (defn best-flavor
   "the best flavor for the current clipboard selection"
   []
-  (let [clipboard (-> (. Toolkit getDefaultToolkit) .getSystemClipboard)
+  (let [clipboard (-> (Toolkit/getDefaultToolkit) .getSystemClipboard)
         flavors (.getAvailableDataFlavors clipboard)]
-  (. DataFlavor selectBestTextFlavor flavors )))
+  (DataFlavor/selectBestTextFlavor flavors)))
 
 (defn is-html?
   "Is the flavor html?"
@@ -29,9 +29,9 @@
    Throws an exception if the clipboard does not contain html
    "
   []
-  (let [clipboard (-> (. Toolkit getDefaultToolkit) .getSystemClipboard)
+  (let [clipboard (-> (Toolkit/getDefaultToolkit) .getSystemClipboard)
         flavors (.getAvailableDataFlavors clipboard)
-        best-flavor (. DataFlavor selectBestTextFlavor flavors)
+        best-flavor (DataFlavor/selectBestTextFlavor flavors)
         contents (.getData clipboard best-flavor)]
     (if (is-html? best-flavor)
       contents
